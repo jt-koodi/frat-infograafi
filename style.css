@@ -123,21 +123,216 @@ html { scroll-behavior: smooth; }
     
   
 
+    /* Lisätty korjaus: Varmistaa että borderit pysyvät näytön sisällä */
+* {
+    box-sizing: border-box;
+}
+
+/* Perustyylit (Light mode) */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #212b32;
+    background-color: #ffffff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: left;
+}
+
+.container {
+    width: 100%; /* Lisätty: jotta max-width toimii oikein mobiilissa */
+    max-width: 600px;
+    overflow-wrap: break-word; /* pakottaa tekstit laatikon sisälle */
+    padding: 2rem;
+    border: 5px solid #0038B8;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 20px;
+    background-color: #ffffff;
+}
+
+ul {
+  list-style-type: none; /* Poistaa pallot */
+  padding: 0;            /* Poistaa sisennyksen vasemmalta */
+  margin: 0;             /* Poistaa ulkopuolisen tyhjän tilan */
+}
+
+h1 { color: #0038B8; }
+h2, h3 { color: #303030; }
+a { color: #0038B8; }
+
+.footer-flex {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.footer-item { flex: 0 1 auto; }
+
+/* Kelluva Takaisin ylös -nappi */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #0038B8;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    font-weight: bold;
+    z-index: 1000;
+    
+    /* Piilotus alussa */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s, background-color 0.3s;
+}
+
+/* Näyttäminen JS:llä */
+.back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    background-color: #005eb8;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Mobiili */
+@media (max-width: 600px) {
+    .responsive-flex { flex-direction: column !important; }
+    .container { 
+        margin: 10px; 
+        padding: 1.5rem; 
+        /* Varmistetaan leveys mobiilissa marginaalit huomioiden */
+        max-width: calc(100% - 20px); 
+    }
+}
+
+/* Night mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #2b2b2b;
+        color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .container {
+        background-color: #2b2b2b;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        border: 5px solid #ffa500;
+    }
+
+    h1, h2, h3 { color: #ffa500; }
+    a { color: #ffa500; } 
+
+    .back-to-top {
+        background-color: #ffa500;
+        color: #2b2b2b !important;
+    }
+
+    .back-to-top:hover {
+        background-color: #1e1e1e !important;
+        color: #ffa500 !important;
+        border: 1px solid #ffa500;
+    }
+
+    hr { border-top-color: #333 !important; }
+    
+  
+/* Taulukko Night mode -yhteensopivaksi */
     table {
         background-color: #2b2b2b;
-        border-color: #ffa500;
+        border: 1px solid #ffffff;
+        border-collapse: collapse;
     }
 
     th, td {
-        border: 1px solid #444; /* Hieman vaaleampi harmaa reunoille, jotta ne erottuvat tummasta pohjasta */
-        color: #ffffff;
+        /* Kaikki reunat samalla oranssilla kuin muualla sivulla */
+        border: 1px solid #ffa500; 
+        color: #ffffff; /* Sama valkoinen teksti kuin body-osassa */
+        background-color: #2b2b2b; /* Sama taustaharmaa kaikissa soluissa */
+        padding: 10px 15px;
     }
 
     th {
-        background-color: #3d3d3d; /* Otsikkoriville hieman eri sävy */
-        color: #ffa500; /* Otsikkoteksti oranssilla */
-        border: 1px solid #ffa500; /* Otsikon reunat oranssilla */
+        color: #ffa500; /* Otsikkoteksti samalla oranssilla */
+        font-weight: bold;
     }
+}
+    
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.thumbnail {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  display: block;
+}
+
+/* Piilotetaan ohjeteksti oletuksena */
+.hover-text {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.8); /* Tumma tausta, jotta teksti erottuu */
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 10%; /* Teksti ilmestyy kuvan alaosaan */
+  left: 5%;
+  right: 5%;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Näytetään teksti, kun linkkiä tai kuvaa "hoverataan" */
+.thumbnail-link:hover .hover-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Lisätään vielä pieni tyyli hiirelle, jotta käyttäjä tietää että kuva on klikattava */
+.thumbnail-link:hover .thumbnail {
+  filter: brightness(80%); /* Tummennetaan kuvaa hieman, jotta teksti nousee esiin */
+}
+
+
+
+/* Taulukon perusasetukset */
+table {
+    border-collapse: collapse;
+    width: auto; /* automaattinen leveys */
+    font-family: "Arial", Arial, sans-serif; /* Fonttityyli */
+    margin: 20px;
+}
+
+/* Solujen tyylit */
+th, td {
+    border: 1px solid black;
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 14px;}
+
+/* Otsikkorivin korostus */
+th {
+    background-color: #ffffff;
+    font-weight: bold;}
 }
     
 }
