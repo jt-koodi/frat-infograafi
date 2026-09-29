@@ -12,6 +12,7 @@ Sivusto tarjoaa tietoa kaatumisriskin arvioinnista ja hyödyntää FRAT-työkalu
 
 - **HTML ja CSS:** Sivuston rakenne ja tyylit.
 - **JavaScript:** Interaktiiviset ominaisuudet
+- **Infograafi:** Käytetty tekijänoikeuden haltijan luvalla. Kaikki oikeudet kuuluvat alkuperäiselle omistajalle.
 - **GitHub Pages:** Sivuston isännöinti
 - **Verkkotunnus:** opinnaytetyo2026.eu
 - **Tekoäly:** Google Geminin käyttö on ollut apuna lähdekoodin toiminnallisuudessa ja vianhaussa. Suunnittelu ja ideointi on tekijän omaa tuotosta.
@@ -66,3 +67,7 @@ Sivustoa ylläpidetään Suomessa, ja se on siten soveltuvin osin Suomen lakien 
   ## Lisenssi:
   
 - **Tämän projektin ohjelmistokoodi on lisensoitu MIT-lisenssillä (katso LICENSE-tiedosto). Sivuston sisällölliset oikeudet ja vastuuvapauslausekkeet on määritelty edellä.**
+
+# Tekninen toteutus ja yhteydenotot:
+
+[jt-koodi] eli https://juhatorvinen.eu
