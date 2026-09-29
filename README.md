@@ -70,4 +70,4 @@ Sivustoa ylläpidetään Suomessa, ja se on siten soveltuvin osin Suomen lakien 
 
 # Tekninen toteutus ja yhteydenotot:
 
-[jt-koodi] eli https://juhatorvinen.eu
+jt-koodi eli https://juhatorvinen.eu
